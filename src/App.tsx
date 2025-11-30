@@ -18,6 +18,7 @@ import Admin from "./pages/Admin";
 import OrderHistory from "./pages/OrderHistory";
 import Profile from "./pages/Profile";
 import Wishlist from "./pages/Wishlist";
+import GoogleCallback from "./pages/GoogleCallback";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -45,6 +46,7 @@ const App = () => (
                 <Route path="/login" element={<Login />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/signup" element={<Signup />} />
+                <Route path="/auth/google/callback" element={<GoogleCallback />} />
                 <Route path="/admin" element={<Admin />} />
                 <Route path="/orders" element={<OrderHistory />} />
                 <Route path="/profile" element={<Profile />} />

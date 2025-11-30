@@ -104,6 +104,15 @@ export const authAPI = {
       }
     );
   },
+
+  getGoogleAuthUrl: async () => {
+    return apiCall<{ success: boolean; data: { authUrl: string } }>(
+      '/auth/google/url',
+      {
+        method: 'GET',
+      }
+    );
+  },
 };
 
 // Products API

@@ -44,21 +44,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
   
-  // Mock Google login
+  // Google login - redirects to Google OAuth
   const loginWithGoogle = async () => {
-    // In a real app, this would use the Google OAuth API
-    console.log('Google login initiated');
-    
-    // Mock successful Google login
-    const mockUser: User = {
-      id: '2',
-      name: 'Google User',
-      email: 'google.user@example.com',
-      isAdmin: false
-    };
-    
-    setUser(mockUser);
-    localStorage.setItem('user', JSON.stringify(mockUser));
+    try {
+      const response = await authAPI.getGoogleAuthUrl();
+      if (response.success && response.data?.authUrl) {
+        // Redirect to Google OAuth
+        window.location.href = response.data.authUrl;
+      } else {
+        throw new Error('Failed to get Google auth URL');
+      }
+    } catch (error: any) {
+      console.error('Google login error:', error);
+      throw error;
+    }
   };
   
   // Signup function

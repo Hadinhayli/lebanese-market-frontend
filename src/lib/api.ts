@@ -106,12 +106,20 @@ export const authAPI = {
   },
 
   getGoogleAuthUrl: async () => {
-    return apiCall<{ success: boolean; data: { authUrl: string } }>(
-      '/auth/google/url',
-      {
-        method: 'GET',
-      }
-    );
+    try {
+      console.log('Getting Google auth URL from:', API_BASE_URL + '/auth/google/url');
+      const response = await apiCall<{ success: boolean; data: { authUrl: string } }>(
+        '/auth/google/url',
+        {
+          method: 'GET',
+        }
+      );
+      console.log('Google auth URL response:', response);
+      return response;
+    } catch (error: any) {
+      console.error('Error getting Google auth URL:', error);
+      throw error;
+    }
   },
 };
 

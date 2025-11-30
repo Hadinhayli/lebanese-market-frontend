@@ -60,19 +60,20 @@ const Login = () => {
   const handleGoogleLogin = async () => {
     try {
       setIsLoading(true);
+      console.log('handleGoogleLogin called');
       await loginWithGoogle();
+      // Note: loginWithGoogle redirects, so this won't execute if successful
       toast({
-        description: "Successfully logged in with Google",
+        description: "Redirecting to Google...",
       });
-      navigate('/');
-    } catch (error) {
+    } catch (error: any) {
+      console.error('Google login error in Login component:', error);
+      setIsLoading(false);
       toast({
         title: "Google login failed",
-        description: "Could not login with Google",
+        description: error.message || "Could not login with Google",
         variant: "destructive"
       });
-    } finally {
-      setIsLoading(false);
     }
   };
   

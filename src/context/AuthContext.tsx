@@ -47,15 +47,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   // Google login - redirects to Google OAuth
   const loginWithGoogle = async () => {
     try {
+      console.log('Starting Google login...');
       const response = await authAPI.getGoogleAuthUrl();
+      console.log('Received response:', response);
+      
       if (response.success && response.data?.authUrl) {
+        console.log('Redirecting to Google OAuth URL:', response.data.authUrl);
         // Redirect to Google OAuth
         window.location.href = response.data.authUrl;
       } else {
-        throw new Error('Failed to get Google auth URL');
+        console.error('Invalid response:', response);
+        throw new Error(response.message || 'Failed to get Google auth URL');
       }
     } catch (error: any) {
       console.error('Google login error:', error);
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+        response: error.response,
+      });
       throw error;
     }
   };

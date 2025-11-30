@@ -55,10 +55,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ value, onChange, required = f
       const response = await uploadAPI.uploadImage(file);
       
       if (response.success && response.data) {
-        // Construct full URL - use the API base URL
-        const apiBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-        const baseUrl = apiBaseUrl.replace('/api', ''); // Remove /api to get base URL
-        const imageUrl = `${baseUrl}${response.data.url}`;
+        // Use the URL directly from Vercel Blob (already a full URL)
+        const imageUrl = response.data.url;
         onChange(imageUrl);
         setPreview(imageUrl);
         toast({

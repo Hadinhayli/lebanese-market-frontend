@@ -152,24 +152,6 @@ const Index = () => {
         </div>
       </section>
       
-      {/* Newsletter Section */}
-      <section className="py-12 bg-brand-600 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Join Our Newsletter</h2>
-          <p className="text-lg mb-6 max-w-2xl mx-auto">Stay updated with the latest products and exclusive offers.</p>
-          <form className="max-w-md mx-auto flex">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-grow px-4 py-2 rounded-l-md text-gray-900 focus:outline-none"
-            />
-            <Button className="rounded-l-none bg-gray-800 hover:bg-gray-900">
-              Subscribe
-            </Button>
-          </form>
-        </div>
-      </section>
-      
       <Footer />
     </div>
   );

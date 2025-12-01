@@ -130,11 +130,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       </Link>
       <CardFooter className="p-4 border-t border-gray-100 bg-gray-50 flex-shrink-0">
         <div className="w-full flex flex-col sm:flex-row justify-between items-center gap-3">
-          <span className="font-bold text-lg whitespace-nowrap">${product.price.toFixed(2)}</span>
+          <span className="font-bold text-lg whitespace-nowrap flex-shrink-0">${product.price.toFixed(2)}</span>
           <Button
             size="sm"
             onClick={handleAddToCart}
-            className="bg-brand-500 hover:bg-brand-600 w-full sm:w-auto flex-shrink-0 min-w-[120px]"
+            className="bg-brand-500 hover:bg-brand-600 w-full sm:w-auto sm:min-w-[140px] flex-shrink-0 whitespace-nowrap"
             disabled={!isAuthenticated}
           >
             <ShoppingCart className="h-4 w-4 sm:mr-2 flex-shrink-0" />
